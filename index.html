@@ -10,7 +10,7 @@ box-sizing: border-box;
 }
 body {
 font-family: Arial, Helvetica, sans-serif;
-margin: 1%;      
+margin: 10%;      
 background: #111111ee;
 
 }
@@ -19,16 +19,100 @@ padding: 10px 6px;
 text-align: center;
 background: #8704f3ee;
 color: rgb(49, 49, 49);
+border-radius: 10px;
+}
+.cube-loader {
+  position: relative;
+/* u can choose any size */
+  
+width: 75px;
+  height: 75px;
+  transform-style: preserve-3d;
+  transform: rotateX(-30deg);
+  animation: animate 4s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    transform: rotateX(-30deg) rotateY(0);
+  }
+
+  100% {
+    transform: rotateX(-30deg) rotateY(360deg);
+  }
+}
+
+.cube-loader .cube-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* top: 0;
+  left: 0; */
+  
+  transform-style: preserve-3d;
+}
+
+.cube-loader .cube-wrapper .cube-span {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* top: 0;
+  left: 0; */
+                                 /* width 75px / 2 = 37.5px */
+  transform: rotateY(calc(90deg * var(--i))) translateZ(37.5px);
+  background: linear-gradient(
+    to bottom,
+    hsl(330, 3.13%, 25.1%) 0%,
+    hsl(177.27, 21.71%, 32.06%) 5.5%,
+    hsl(176.67, 34.1%, 36.88%) 12.1%,
+    hsl(176.61, 42.28%, 40.7%) 19.6%,
+    hsl(176.63, 48.32%, 43.88%) 27.9%,
+    hsl(176.66, 53.07%, 46.58%) 36.6%,
+    hsl(176.7, 56.94%, 48.91%) 45.6%,
+    hsl(176.74, 62.39%, 50.91%) 54.6%,
+    hsl(176.77, 69.86%, 52.62%) 63.4%,
+    hsl(176.8, 76.78%, 54.08%) 71.7%,
+    hsl(176.83, 83.02%, 55.29%) 79.4%,
+    hsl(176.85, 88.44%, 56.28%) 86.2%,
+    hsl(176.86, 92.9%, 57.04%) 91.9%,
+    hsl(176.88, 96.24%, 57.59%) 96.3%,
+    hsl(176.88, 98.34%, 57.93%) 99%,
+    hsl(176.89, 99.07%, 58.04%) 100%
+
+    );
+}
+
+.cube-top {
+  position: absolute;
+  width: 75px;
+  height: 75px;
+  background: rgb(63, 62, 62) 0%;
+                      /* width 75px / 2 = 37.5px */
+  transform: rotateX(90deg) translateZ(37.5px);
+  transform-style: preserve-3d;
+}
+
+.cube-top::before {
+  content: '';
+  position: absolute;
+/* u can choose any size */
+  width: 75px;
+  height: 75px;
+  background: hsl(176.61, 42.28%, 40.7%) 19.6%;
+  transform: translateZ(-90px);
+  filter: blur(10px);
+  box-shadow: 0 0 10px #323232,
+              0 0 20px hsl(176.61, 42.28%, 40.7%) 19.6%,
+              0 0 30px #323232,
+              0 0 40px hsl(176.61, 42.28%, 40.7%) 19.6%;
 }
 .header h1 {
 font-size: 40px;
 }
 .navbar {
 overflow: hidden;
-background-color: #333;
-position: sticky;
-position: -webkit-sticky;
-top: 0;
+background-color: rgb(51, 49, 49);
+
 }
 .navbar a {
 float: left;
@@ -37,16 +121,32 @@ color: rgb(6, 255, 214);
 text-align: center;
 padding: 14px 20px ;
 text-decoration: none;
+position: relative;
+  padding: 10px 20px;
+  border-radius: 70px;
+  border: 1px solid rgb(61, 106, 255);
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 2px;
+  background: transparent;
+  color: rgb(122, 226, 2);
+  overflow: hidden;
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
 }
 .navbar a.right {
 float: right;
 }
 .navbar a:hover {
-background-color: #ddd;
-color: rgb(221, 181, 181);
+background-color: rgba(202, 140, 140, 0.397);
+color: rgb(20, 20, 20);
+
 }
 .navbar a.active {
-background-color: rgba(170, 164, 164, 0.521);
+background-color: rgba(226, 204, 204, 0.521);
 color: rgb(250, 0, 217);
 }
 .row {
@@ -55,75 +155,107 @@ color: rgb(250, 0, 217);
 display: flex;
 -ms-flex-wrap: wrap; /* IE10 */
 flex-wrap: wrap; 
-color: rgb(240, 240, 240);
+color: rgb(235, 212, 212);
 
 }
-.side {
+.side  {
 -ms-flex:100%; /* IE10 */
 flex: 30%;
-background-color: #292929;
+background-color: #252424;
 padding: 10px 6px;
 
 }
 .main {
--ms-flex: 30%; /* IE10 */
+
+    -ms-flex: 30%; 
 flex: 3;
 background-color: #292929;
-padding: 900px 6px;
+padding: 100px 6px;
+
+}
+.server-card {
+    background-color: rgba(58, 51, 51, 0);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    margin: 20px; 
+    width: 300px; 
+    float: left; 
+}
+
+
+.server-card h1 {
+    font-size: 24px;
+    color: #333;
+}
+.parent {
+  width: 300px;
+  padding: 20px;
+  perspective: 1000px;
 }
 .fakeimg {
-background-color: rgb(0, 225, 255);
+background-color: rgb(173, 126, 126);
 width: 100%;
 padding: 20px;
 }
 
+ 
 </style>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 </head> 
 </head>
 <body>
 <div class="header">
-<h1>supermyclash</h1>
-<p style="font-weight: bold"></p> 
+    
+    <h1>supermyclash</h1>
+
+ 
 </div>
 <div class="navbar">
-<a href="#" class="active">صفحه اصلی</a>
+    <a href="#" class="active">صفحه اصلی</a>
 <a href="https://www.aparat.com/elixir1">اپارات ما</a>
     <a href="https://rubika.ir/studioSMR">روبیکا</a>
     <a href="https://youtube.com/@supermyclash1">یوتیوب</a>
-    <a rel="stylesheet" href="lock.html" class="right">ساعت</a>
-    <a href="stream.html">استریم</a>
+    <a  href="lock.html" >ساعت</a>
+    <a  href="stream.html">استریم</a>
 </div>
 <div class="row">
 <div class="side">
-<h2>فعالیت مارو میتونید از سایت دنبال کنید</h2>
+<div class="server-card">
+    <h2>فعالیت مارو میتونید از سایت دنبال کنید</h2>
 <h5>...این وبسایت تکمیل نشده</h5>
 
 <p>SMR  فعالیت وب سایت رسمی </p>
 <h3>شما میتونید استریم مارو از طریق سایت ما تماشا کنید </h3>
 <p>@supermyclash   ایدی روبیکا</p>
 
-
 </div>
+
+</diva>
 <div class="main">
    
-    <h5></h5>
-<p> </p> 
-<br>
-<h2></h2>
-<h5> </h5>
-<p></p>
+<p>Technoblade</p>
 
+  <img src="https://s6.uupload.ir/files/irs01_834x835_ckhkljvi_2912753_1656688654571942434_iwix.jpeg" style="height:200px;">
 
+</div>
 
-
-
-<h2> ویدیو ها</h2>
-<div id="12042517346"><script type="text/JavaScript" src="https://www.aparat.com/embed/ZvGpm?data[rnddiv]=12042517346&data[responsive]=yes"></script>ویدیو</div> <p>یک دنیا معذرت</p>
-<div id="85948074490"><script type="text/JavaScript" src="https://www.aparat.com/embed/to6z0?data[rnddiv]=85948074490&data[responsive]=yes"></script></div>
-<h5>  ویدیو های این وبسایت برای تمامی پلتفرم ها نیم بها  هست</h5>
-<h5> به جز ایرانسل</h5>
   
+<div class="cube-loader">
+    <div class="cube-top"></div>
+    <div class="cube-wrapper">
+      <span style="--i:0" class="cube-span"></span>
+      <span style="--i:1" class="cube-span"></span>
+      <span style="--i:2" class="cube-span"></span>
+      <span style="--i:3" class="cube-span"></span>
+    </div>
+  </div>
+<H2>ویدیو</H2>
+
+<h5>  ویدیو این پخش برای تمامی پلتفرم نیم بها هست </h5>
+<h5> به جز ایرانسل</h5>
+<div id="64229126041"><script type="text/JavaScript" src="https://www.aparat.com/embed/ZvGpm?data[rnddiv]=64229126041&data[responsive]=yes"></script></div>
 
 
 
@@ -132,10 +264,10 @@ padding: 20px;
 
 
 
-</div>
+
+
 </div>
 
-<div class="header"></div>
 <h2>SMR ساخته شده در استودیو </h2>
 </div>
 
