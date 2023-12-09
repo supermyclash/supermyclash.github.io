@@ -1,2 +1,1 @@
-# supermyclash.github.io
 
